@@ -97,3 +97,9 @@ def to_datadivr(G, name, pos, nodecolor, annotation, cluster, linkcolor):
     nx.set_edge_attributes(GVR, d_edge_color, name="linkcolor")
     
     return GVR
+    
+GVR = to_datadivr(G_corr, "Feature_Correlations_normalized", pos, nodecolor, annotation, cluster, linkcolor)
+G_json = json.dumps(nx.node_link_data(GVR))
+
+with open(GVR.name+".json", "w") as outfile:
+    outfile.write(G_json)
